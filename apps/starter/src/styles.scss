@@ -13,15 +13,13 @@
 // limitations under the License.
 
 @use '@angular/material' as mat;
-@use '@normative/theme' as theme;
-@use '@normative/theme/colors' as colors;
 
 @import 'styles/button';
 @import 'styles/container';
 
 // Material
-@include theme.core();
-@include theme.all-component-themes();
+@include mat.core();
+@include mat.all-component-themes();
 
 @import 'styles/checkbox';
 @import 'styles/datepicker';
