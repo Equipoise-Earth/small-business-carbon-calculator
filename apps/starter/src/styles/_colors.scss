@@ -55,6 +55,22 @@ $secondary: (
   ),
 );
 
+$primary-palette: (
+  100: #e3f2fd,
+  300: #64b5f6,
+  500: #2196f3,
+  700: #1976d2,
+  contrast: #ffffff
+);
+
+$brand-palette: (
+  100: #ffccbc,
+  300: #ff7043,
+  500: #ff5722,
+  700: #e64a19,
+  contrast: #000000
+);
+
 // Define other brand colors
 $success: #4caf50;
 $warning: #ff9800;
@@ -78,8 +94,16 @@ $background: (
   @return map-get($contrast-map, $hue);
 }
 
-@function get-primary-color($hue: default) {
-  @return map-get($primary, $hue);
+@function get-primary-color($shade: 500) {
+  @return map-get($primary-palette, $shade);
+}
+
+@function get-brand-color($shade: 500) {
+  @return map-get($brand-palette, $shade);
+}
+
+@function get-primary-contrast-color() {
+  @return map-get($primary-palette, contrast);
 }
 
 // Example usage
