@@ -21,6 +21,7 @@
 $regular: 400;
 $medium: 500;
 $bold: 700;
+$demibold: 600 !default;
 
 /// 2018 mapping conversion, following internal Angular Material usage (with Starter extras)
 /// https://github.com/angular/components/blob/master/src/material/core/typography/_typography.scss#L144-L177
@@ -40,6 +41,7 @@ $variants: (
   body-2: mat.define-typography-level(14px, 20px, $regular),
   caption: mat.define-typography-level(12px, 16px, $regular),
   button: mat.define-typography-level(14px, 16px, $medium)
+  demibold: $demibold
 );
 
 // Merge input into $variants after it's fully defined
