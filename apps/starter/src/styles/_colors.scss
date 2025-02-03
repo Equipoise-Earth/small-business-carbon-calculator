@@ -102,8 +102,8 @@ $background: (
   @return map-get($brand-palette, $shade);
 }
 
-@function get-primary-contrast-color() {
-  @return map-get($primary-palette, contrast);
+@function get-primary-contrast-color($shade: 500) {
+  @return map-get($primary-contrast, $shade);
 }
 
 // Example usage
