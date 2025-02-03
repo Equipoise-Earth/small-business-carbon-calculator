@@ -15,17 +15,13 @@
 @use 'sass:list';
 @use 'sass:map';
 @use '@angular/material' as mat;
-@use '@normative/theme' as theme;
 @use 'typography' as typography;
 
-$color: mat.get-color-config(theme.$theme);
-$primary: map-get($color, primary);
-$warn: map-get($color, warn);
-
-$typography: mat.get-typography-config(theme.$theme);
+$primary: mat.define-palette(mat.$blue-palette);
+$warn: mat.define-palette(mat.$red-palette);
 
 mat-form-field.mat-form-field {
-  @include typography.font(input);
+  @include mat.typography-level(map-get($variants, input));
 
   color: mat.get-color-from-palette($primary);
 
