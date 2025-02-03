@@ -83,6 +83,21 @@ $background: (
   dark: #121212,
 );
 
+// Define primary contrast palette
+$primary-contrast: (
+  50: #000,
+  100: #000,
+  200: #000,
+  300: #000,
+  400: #000,
+  500: #fff,
+  600: #fff,
+  700: #fff,
+  800: #fff,
+  900: #fff,
+  default: #fff
+);
+
 // Function to get color from a palette
 @function get-color($palette, $hue: default) {
   @return map-get($palette, $hue);
@@ -103,7 +118,12 @@ $background: (
 }
 
 @function get-primary-contrast-color($shade: 500) {
-  @return map-get($primary-contrast, $shade);
+  @if map-has-key($primary-contrast, $shade) {
+    @return map-get($primary-contrast, $shade);
+  } @else {
+    @warn "get-primary-contrast-color(): Shade #{$shade} is not in primary-contrast map.";
+    @return #fff; // Fallback color
+  }
 }
 
 // Example usage
