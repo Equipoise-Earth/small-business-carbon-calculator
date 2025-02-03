@@ -47,31 +47,9 @@ const AUTH_OPTIONS: AuthConfig = {
 };
 
 @NgModule({
-  declarations: [],
   imports: [
-    // Temporarily replace AuthModule with an empty module
-    CommonModule,
-
-@NgModule({
-  declarations: [],
-  imports: [
-    AuthModule.forRoot(AUTH_OPTIONS),
-    CommonModule,
-    CookiesModule,
-    HttpClientModule,
-    MatIconModule,
-    NgxsModule.forRoot([DataState, ImpactState, OrganizationState, UserState], {
-      developmentMode: !environment.production,
-    }),
-    NgxsReduxDevtoolsPluginModule.forRoot({ disabled: environment.production }),
+    // Remove dependency temporarily
+    // AuthModule.forRoot(AUTH_OPTIONS),
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthHttpInterceptor, multi: true },
-    IconsService,
-    ImpactService,
-    UserService,
-    LoggingService,
-  ],
-  exports: [CookiesModule],
 })
 export class CoreModule {}
