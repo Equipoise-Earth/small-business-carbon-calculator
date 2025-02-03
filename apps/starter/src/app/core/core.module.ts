@@ -36,15 +36,21 @@ import { UserState } from './user/user.state';
 
 const AUTH_OPTIONS: AuthConfig = {
   cacheLocation: 'localstorage',
-  clientId: environment.AUTH0_CLIENT_ID,
-  domain: environment.AUTH0_DOMAIN,
+  clientId: 'test-client-id',
+  domain: 'test-domain',
   errorPath: 'auth/login',
-  audience: environment.AUTH0_AUDIENCE,
+  audience: 'test-audience',
   httpInterceptor: {
-    allowedList: [`${environment.NORMATIVE_AUTH_URL}/*`, `${environment.NORMATIVE_DATA_UPLOAD_URL}/*`],
+    allowedList: [],
   },
-  redirectUri: environment.AUTH0_REDIRECT_URI,
+  redirectUri: 'http://localhost:4200',
 };
+
+@NgModule({
+  declarations: [],
+  imports: [
+    // Temporarily replace AuthModule with an empty module
+    CommonModule,
 
 @NgModule({
   declarations: [],

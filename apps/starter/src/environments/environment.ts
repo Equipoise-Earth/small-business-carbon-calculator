@@ -23,17 +23,17 @@ import { Environment } from './environment.model';
 
 export const environment: Environment = {
   production: false,
-  styleguide: false, // Set to false unless actively using the styleguide
+  styleguide: false, 
 
   // Normative API URLs
   NORMATIVE_AUTH_URL: '',
   NORMATIVE_DATA_UPLOAD_URL: '',
 
-  // Authentication
-  AUTH0_CLIENT_ID: '',
-  AUTH0_DOMAIN: '',
-  AUTH0_REDIRECT_URI: '',
-  AUTH0_AUDIENCE: '',
+  // Authentication - temporarily removed
+  AUTH0_CLIENT_ID: null,
+  AUTH0_DOMAIN: null,
+  AUTH0_REDIRECT_URI: null,
+  AUTH0_AUDIENCE: null,
 
   // Analytics & Monitoring
   GA_MEASUREMENT_ID: '',

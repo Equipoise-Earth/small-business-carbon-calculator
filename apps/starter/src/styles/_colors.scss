@@ -1,3 +1,4 @@
+
 // Define primary color palette
 $primary: (
   50: #e3f2fd,
@@ -75,6 +76,10 @@ $background: (
 @function get-contrast-color($palette, $hue: default) {
   $contrast-map: map-get($palette, "contrast");
   @return map-get($contrast-map, $hue);
+}
+
+@function get-primary-color($hue: default) {
+  @return map-get($primary, $hue);
 }
 
 // Example usage
