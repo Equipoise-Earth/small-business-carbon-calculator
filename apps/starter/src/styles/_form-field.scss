@@ -119,7 +119,7 @@ mat-form-field.mat-form-field {
 
   &.mat-form-field-has-label {
     .mat-form-field-infix {
-      @include typography.font(h6, $font-weight: typography.$regular);
+      @include typography.font(h6, $font-weight: $regular);
     }
   }
 
