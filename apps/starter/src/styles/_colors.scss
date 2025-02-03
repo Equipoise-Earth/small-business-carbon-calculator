@@ -118,6 +118,11 @@ $primary-contrast: (
 }
 
 @function get-primary-contrast-color($shade: 500) {
+  @if type-of($primary-contrast) != "map" {
+    @error "get-primary-contrast-color(): Expected a map but got #{type-of($primary-contrast)}.";
+    @return #fff;
+  }
+
   @if map-has-key($primary-contrast, $shade) {
     @return map-get($primary-contrast, $shade);
   } @else {
@@ -125,6 +130,7 @@ $primary-contrast: (
     @return #fff; // Fallback color
   }
 }
+
 
 // Example usage
 $primary-color: get-color($primary);
