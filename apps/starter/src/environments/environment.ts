@@ -23,13 +23,23 @@ import { Environment } from './environment.model';
 
 export const environment: Environment = {
   production: false,
-  styleguide: true,
+  styleguide: false, // Set to false unless actively using the styleguide
 
+  // Normative API URLs
   NORMATIVE_AUTH_URL: '',
   NORMATIVE_DATA_UPLOAD_URL: '',
 
+  // Authentication
   AUTH0_CLIENT_ID: '',
   AUTH0_DOMAIN: '',
   AUTH0_REDIRECT_URI: '',
   AUTH0_AUDIENCE: '',
+
+  // Analytics & Monitoring
+  GA_MEASUREMENT_ID: '',
+  HOTJAR_ID: '',
+  HOTJAR_SNIPPET_VERSION: '',
+  SENTRY_DSN: '',
+  SENTRY_ENVIRONMENT: '',
 };
+
