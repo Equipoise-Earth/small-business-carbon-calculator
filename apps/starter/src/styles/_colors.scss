@@ -1,42 +1,84 @@
-// Copyright 2022 Meta Mind AB
-// 
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-// 
-//     http://www.apache.org/licenses/LICENSE-2.0
-// 
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
+// Define primary color palette
+$primary: (
+  50: #e3f2fd,
+  100: #bbdefb,
+  200: #90caf9,
+  300: #64b5f6,
+  400: #42a5f5,
+  500: #2196f3,
+  600: #1e88e5,
+  700: #1976d2,
+  800: #1565c0,
+  900: #0d47a1,
+  default: #2196f3,
+  contrast: (
+    50: #000,
+    100: #000,
+    200: #000,
+    300: #000,
+    400: #000,
+    500: #fff,
+    600: #fff,
+    700: #fff,
+    800: #fff,
+    900: #fff,
+    default: #fff,
+  ),
+);
 
-@use 'sass:map';
-@use '@angular/material' as mat;
-@use '@normative/theme' as theme;
+// Define secondary color palette
+$secondary: (
+  50: #fce4ec,
+  100: #f8bbd0,
+  200: #f48fb1,
+  300: #f06292,
+  400: #ec407a,
+  500: #e91e63,
+  600: #d81b60,
+  700: #c2185b,
+  800: #ad1457,
+  900: #880e4f,
+  default: #e91e63,
+  contrast: (
+    50: #000,
+    100: #000,
+    200: #000,
+    300: #000,
+    400: #000,
+    500: #fff,
+    600: #fff,
+    700: #fff,
+    800: #fff,
+    900: #fff,
+    default: #fff,
+  ),
+);
 
-$config: mat.get-color-config(theme.$theme);
-$primary: map-get($config, primary);
-$brand: map-get($config, accent);
+// Define other brand colors
+$success: #4caf50;
+$warning: #ff9800;
+$error: #f44336;
+$info: #03a9f4;
 
-@function get-primary-color($hue: default) {
-  @return mat.get-color-from-palette($primary, $hue);
+// Background colors
+$background: (
+  light: #ffffff,
+  dark: #121212,
+);
+
+// Function to get color from a palette
+@function get-color($palette, $hue: default) {
+  @return map-get($palette, $hue);
 }
 
-@function get-primary-contrast-color($hue: default) {
-  @return get-contrast-color($primary, $hue);
-}
-
-@function get-brand-color($hue: default) {
-  @return mat.get-color-from-palette($brand, $hue);
-}
-
-@function get-brand-contrast-color($hue: default) {
-  @return get-contrast-color($brand, $hue);
-}
-
+// Function to get contrast color for text
 @function get-contrast-color($palette, $hue: default) {
-  $contrast: mat.get-color-from-palette($palette, $hue + '-contrast');
-  @return $contrast or #000;
+  $contrast-map: map-get($palette, "contrast");
+  @return map-get($contrast-map, $hue);
 }
+
+// Example usage
+$primary-color: get-color($primary);
+$secondary-color: get-color($secondary);
+$primary-contrast: get-contrast-color($primary);
+$secondary-contrast: get-contrast-color($secondary);
