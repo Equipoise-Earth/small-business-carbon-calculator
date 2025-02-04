@@ -45,9 +45,10 @@ $variants: (
 );
 
 // Merge input into $variants after it's fully defined
-@debug "Before merging input typography:", $variants;
+@debug "Before merging input typography:", type-of($variants), $variants;
+@debug "Input typography before merge:", type-of($input-typography), $input-typography;
 $variants: map-merge($variants, (input: $input-typography));
-@debug "After merging input typography:", $variants;
+@debug "After merging input typography:", type-of($variants), $variants;
 
 
 // Variants to use as a replacement for mobile
@@ -81,8 +82,12 @@ $ligatures-variants: (h1, h2, h3, h4, h5, h6);
   $mobile-variant: map-get($mobile-variants, $variant),
   $numeric: false
 ) {
-  @debug "Checking mobile variants:", $mobile-variants;
-  @debug "Mobile variant for #{$variant}:", $mobile-variant;
+  @debug "Checking mobile variants:", type-of($mobile-variants), $mobile-variants;
+  @debug "Mobile variant for #{$variant}:", type-of($mobile-variant), $mobile-variant;
+  
+  @if not map-has-key($mobile-variants, $variant) {
+    @debug "No mobile variant found for #{$variant}.";
+  }
 
   @if ($ligatures or $numeric) {
     @include font-settings($ligatures, $numeric);
@@ -123,9 +128,16 @@ $ligatures-variants: (h1, h2, h3, h4, h5, h6);
 /// @param {string} $font-weight - The required font-weight to use (if different to the default)
 /// @param {string} $line-height - The required line-height to use (if different to the default)
 @mixin font-shorthand($variant, $font-size: false, $font-weight: false, $line-height: false) {
-  @debug "Checking $variants before fetching properties:", $variants;
+  @debug "Checking $variants before fetching properties:", type-of($variants), $variants;
+  @debug "Trying to fetch variant: #{$variant}";
+  @debug "Variant exists in map? #{map-has-key($variants, $variant)}";
+
+  @if not map-has-key($variants, $variant) {
+   @error "Variant #{$variant} not found in $variants map!";
+  }
+
   $font-size: if($font-size, $font-size, mat.font-size($variants, $variant));
-  @debug "Font size for #{$variant}:", $font-size;
+  @debug "Font size for #{$variant}:", type-of($font-size), $font-size;
   $font-weight: if($font-weight, $font-weight, mat.font-weight($variants, $variant));
   $line-height: if($line-height, $line-height, mat.line-height($variants, $variant));
   $font-family: mat.font-family($variants, $variant);
