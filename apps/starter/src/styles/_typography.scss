@@ -45,7 +45,10 @@ $variants: (
 );
 
 // Merge input into $variants after it's fully defined
+@debug "Before merging input typography:", $variants;
 $variants: map-merge($variants, (input: $input-typography));
+@debug "After merging input typography:", $variants;
+
 
 // Variants to use as a replacement for mobile
 $mobile-breakpoint: 768px;
@@ -68,6 +71,7 @@ $ligatures-variants: (h1, h2, h3, h4, h5, h6);
 /// @param {string} $line-height - The required line-height to use (if different to the default)
 /// @param {string} $mobile-variant - Whether to render a different variant for mobile
 /// @param {string} $numeric - Whether to turn on the numeric font features
+
 @mixin font(
   $variant,
   $font-size: false,
@@ -77,6 +81,9 @@ $ligatures-variants: (h1, h2, h3, h4, h5, h6);
   $mobile-variant: map-get($mobile-variants, $variant),
   $numeric: false
 ) {
+  @debug "Checking mobile variants:", $mobile-variants;
+  @debug "Mobile variant for #{$variant}:", $mobile-variant;
+
   @if ($ligatures or $numeric) {
     @include font-settings($ligatures, $numeric);
   }
@@ -116,7 +123,9 @@ $ligatures-variants: (h1, h2, h3, h4, h5, h6);
 /// @param {string} $font-weight - The required font-weight to use (if different to the default)
 /// @param {string} $line-height - The required line-height to use (if different to the default)
 @mixin font-shorthand($variant, $font-size: false, $font-weight: false, $line-height: false) {
+  @debug "Checking $variants before fetching properties:", $variants;
   $font-size: if($font-size, $font-size, mat.font-size($variants, $variant));
+  @debug "Font size for #{$variant}:", $font-size;
   $font-weight: if($font-weight, $font-weight, mat.font-weight($variants, $variant));
   $line-height: if($line-height, $line-height, mat.line-height($variants, $variant));
   $font-family: mat.font-family($variants, $variant);

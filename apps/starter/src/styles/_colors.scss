@@ -135,5 +135,5 @@ $primary-contrast: (
 // Example usage
 $primary-color: get-color($primary);
 $secondary-color: get-color($secondary);
-$primary-contrast: get-contrast-color($primary);
-$secondary-contrast: get-contrast-color($secondary);
+$primary-contrast-default: get-contrast-color($primary);
+$secondary-contrast-default: get-contrast-color($secondary);

@@ -21,7 +21,7 @@
 
 // Material
 @include mat.core();
-@include mat.all-component-themes();
+@include mat.all-component-themes(mat.define-light-theme((color: (primary: mat.define-palette(mat.$indigo-palette)))));
 
 @import 'styles/checkbox';
 @import 'styles/datepicker';
